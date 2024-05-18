@@ -1,0 +1,11 @@
+C:\Projects\ACMEPAY\ACMEPAY\Domain\bin\Debug\net7.0\Domain.deps.json
+C:\Projects\ACMEPAY\ACMEPAY\Domain\bin\Debug\net7.0\Domain.dll
+C:\Projects\ACMEPAY\ACMEPAY\Domain\bin\Debug\net7.0\Domain.pdb
+C:\Projects\ACMEPAY\ACMEPAY\Domain\obj\Debug\net7.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\ACMEPAY\ACMEPAY\Domain\obj\Debug\net7.0\Domain.AssemblyInfoInputs.cache
+C:\Projects\ACMEPAY\ACMEPAY\Domain\obj\Debug\net7.0\Domain.AssemblyInfo.cs
+C:\Projects\ACMEPAY\ACMEPAY\Domain\obj\Debug\net7.0\Domain.csproj.CoreCompileInputs.cache
+C:\Projects\ACMEPAY\ACMEPAY\Domain\obj\Debug\net7.0\Domain.dll
+C:\Projects\ACMEPAY\ACMEPAY\Domain\obj\Debug\net7.0\refint\Domain.dll
+C:\Projects\ACMEPAY\ACMEPAY\Domain\obj\Debug\net7.0\Domain.pdb
+C:\Projects\ACMEPAY\ACMEPAY\Domain\obj\Debug\net7.0\ref\Domain.dll

@@ -1,0 +1,12 @@
+C:\Projects\ACMEPAY\ACMEPAY\Persistence\bin\Debug\net7.0\Persistence.deps.json
+C:\Projects\ACMEPAY\ACMEPAY\Persistence\bin\Debug\net7.0\Persistence.dll
+C:\Projects\ACMEPAY\ACMEPAY\Persistence\bin\Debug\net7.0\Persistence.pdb
+C:\Projects\ACMEPAY\ACMEPAY\Persistence\obj\Debug\net7.0\Persistence.csproj.AssemblyReference.cache
+C:\Projects\ACMEPAY\ACMEPAY\Persistence\obj\Debug\net7.0\Persistence.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\ACMEPAY\ACMEPAY\Persistence\obj\Debug\net7.0\Persistence.AssemblyInfoInputs.cache
+C:\Projects\ACMEPAY\ACMEPAY\Persistence\obj\Debug\net7.0\Persistence.AssemblyInfo.cs
+C:\Projects\ACMEPAY\ACMEPAY\Persistence\obj\Debug\net7.0\Persistence.csproj.CoreCompileInputs.cache
+C:\Projects\ACMEPAY\ACMEPAY\Persistence\obj\Debug\net7.0\Persistence.dll
+C:\Projects\ACMEPAY\ACMEPAY\Persistence\obj\Debug\net7.0\refint\Persistence.dll
+C:\Projects\ACMEPAY\ACMEPAY\Persistence\obj\Debug\net7.0\Persistence.pdb
+C:\Projects\ACMEPAY\ACMEPAY\Persistence\obj\Debug\net7.0\ref\Persistence.dll
