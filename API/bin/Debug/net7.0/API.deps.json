@@ -8,12 +8,9 @@
     ".NETCoreApp,Version=v7.0": {
       "API/1.0.0": {
         "dependencies": {
-          "AutoMapper": "13.0.1",
-          "Dapper": "2.1.35",
           "Domain": "1.0.0",
+          "Infrastructure": "1.0.0",
           "Microsoft.AspNetCore.OpenApi": "7.0.17",
-          "Microsoft.Data.SqlClient": "5.2.0",
-          "Persistence": "1.0.0",
           "Swashbuckle.AspNetCore": "6.5.0"
         },
         "runtime": {
@@ -655,17 +652,30 @@
           }
         }
       },
+      "Application/1.0.0": {
+        "dependencies": {
+          "AutoMapper": "13.0.1",
+          "Domain": "1.0.0"
+        },
+        "runtime": {
+          "Application.dll": {}
+        }
+      },
       "Domain/1.0.0": {
         "runtime": {
           "Domain.dll": {}
         }
       },
-      "Persistence/1.0.0": {
+      "Infrastructure/1.0.0": {
         "dependencies": {
-          "FluentMigrator.Runner.SqlServer": "5.2.0"
+          "Application": "1.0.0",
+          "Dapper": "2.1.35",
+          "Domain": "1.0.0",
+          "FluentMigrator.Runner.SqlServer": "5.2.0",
+          "Microsoft.Data.SqlClient": "5.2.0"
         },
         "runtime": {
-          "Persistence.dll": {}
+          "Infrastructure.dll": {}
         }
       }
     }
@@ -1110,12 +1120,17 @@
       "path": "system.windows.extensions/6.0.0",
       "hashPath": "system.windows.extensions.6.0.0.nupkg.sha512"
     },
+    "Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "Domain/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Persistence/1.0.0": {
+    "Infrastructure/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

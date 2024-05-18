@@ -1092,6 +1092,20 @@
           }
         }
       },
+      "Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "AutoMapper": "13.0.1",
+          "Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Application.dll": {}
+        }
+      },
       "Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
@@ -1102,17 +1116,21 @@
           "bin/placeholder/Domain.dll": {}
         }
       },
-      "Persistence/1.0.0": {
+      "Infrastructure/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
-          "FluentMigrator.Runner.SqlServer": "5.2.0"
+          "Application": "1.0.0",
+          "Dapper": "2.1.35",
+          "Domain": "1.0.0",
+          "FluentMigrator.Runner.SqlServer": "5.2.0",
+          "Microsoft.Data.SqlClient": "5.2.0"
         },
         "compile": {
-          "bin/placeholder/Persistence.dll": {}
+          "bin/placeholder/Infrastructure.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Persistence.dll": {}
+          "bin/placeholder/Infrastructure.dll": {}
         }
       }
     }
@@ -3291,25 +3309,27 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "Application/1.0.0": {
+      "type": "project",
+      "path": "../Application/Application.csproj",
+      "msbuildProject": "../Application/Application.csproj"
+    },
     "Domain/1.0.0": {
       "type": "project",
       "path": "../Domain/Domain.csproj",
       "msbuildProject": "../Domain/Domain.csproj"
     },
-    "Persistence/1.0.0": {
+    "Infrastructure/1.0.0": {
       "type": "project",
-      "path": "../Persistence/Persistence.csproj",
-      "msbuildProject": "../Persistence/Persistence.csproj"
+      "path": "../Persistence/Infrastructure.csproj",
+      "msbuildProject": "../Persistence/Infrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "AutoMapper >= 13.0.1",
-      "Dapper >= 2.1.35",
       "Domain >= 1.0.0",
+      "Infrastructure >= 1.0.0",
       "Microsoft.AspNetCore.OpenApi >= 7.0.17",
-      "Microsoft.Data.SqlClient >= 5.2.0",
-      "Persistence >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.5.0"
     ]
   },
@@ -3343,8 +3363,8 @@
             "C:\\Projects\\ACMEPAY\\ACMEPAY\\Domain\\Domain.csproj": {
               "projectPath": "C:\\Projects\\ACMEPAY\\ACMEPAY\\Domain\\Domain.csproj"
             },
-            "C:\\Projects\\ACMEPAY\\ACMEPAY\\Persistence\\Persistence.csproj": {
-              "projectPath": "C:\\Projects\\ACMEPAY\\ACMEPAY\\Persistence\\Persistence.csproj"
+            "C:\\Projects\\ACMEPAY\\ACMEPAY\\Persistence\\Infrastructure.csproj": {
+              "projectPath": "C:\\Projects\\ACMEPAY\\ACMEPAY\\Persistence\\Infrastructure.csproj"
             }
           }
         }
@@ -3359,21 +3379,9 @@
       "net7.0": {
         "targetAlias": "net7.0",
         "dependencies": {
-          "AutoMapper": {
-            "target": "Package",
-            "version": "[13.0.1, )"
-          },
-          "Dapper": {
-            "target": "Package",
-            "version": "[2.1.35, )"
-          },
           "Microsoft.AspNetCore.OpenApi": {
             "target": "Package",
             "version": "[7.0.17, )"
-          },
-          "Microsoft.Data.SqlClient": {
-            "target": "Package",
-            "version": "[5.2.0, )"
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",

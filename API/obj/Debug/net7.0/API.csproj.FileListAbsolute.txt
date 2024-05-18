@@ -91,6 +91,8 @@ C:\Projects\ACMEPAY\ACMEPAY\API\bin\Debug\net7.0\Microsoft.Extensions.Logging.Ab
 C:\Projects\ACMEPAY\ACMEPAY\API\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
 C:\Projects\ACMEPAY\ACMEPAY\API\bin\Debug\net7.0\Microsoft.Extensions.Primitives.dll
 C:\Projects\ACMEPAY\ACMEPAY\API\bin\Debug\net7.0\de-DE\FluentMigrator.Abstractions.resources.dll
-C:\Projects\ACMEPAY\ACMEPAY\API\bin\Debug\net7.0\Persistence.dll
-C:\Projects\ACMEPAY\ACMEPAY\API\bin\Debug\net7.0\Persistence.pdb
 C:\Projects\ACMEPAY\ACMEPAY\API\bin\Debug\net7.0\AutoMapper.dll
+C:\Projects\ACMEPAY\ACMEPAY\API\bin\Debug\net7.0\Application.dll
+C:\Projects\ACMEPAY\ACMEPAY\API\bin\Debug\net7.0\Infrastructure.dll
+C:\Projects\ACMEPAY\ACMEPAY\API\bin\Debug\net7.0\Infrastructure.pdb
+C:\Projects\ACMEPAY\ACMEPAY\API\bin\Debug\net7.0\Application.pdb

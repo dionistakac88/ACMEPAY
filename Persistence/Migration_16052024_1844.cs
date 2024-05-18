@@ -1,12 +1,7 @@
 ﻿using FluentMigrator;
 using FluentMigrator.SqlServer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Persistence
+namespace Infrastructure
 {
     [Migration(160520241844)]
     public class Migration_160520241844 : Migration
@@ -20,9 +15,9 @@ namespace Persistence
         {
             Create.Table("Orders")
                 .WithColumn("Id").AsInt32().NotNullable().Identity(1, 1).PrimaryKey()
-                .WithColumn("guid").AsGuid().NotNullable() //.WithDefault(SystemMethods.NewGuid)
+                .WithColumn("guid").AsGuid().NotNullable().WithDefault(SystemMethods.NewGuid)
                 .WithColumn("amount").AsDecimal().NotNullable()
-                .WithColumn("currency").AsString().NotNullable()
+                .WithColumn("currency").AsCustom("NVARCHAR(3)").NotNullable()
                 .WithColumn("card_holder_number").AsString().NotNullable()
                 .WithColumn("holder_name").AsString().NotNullable()
                 .WithColumn("expiration_month").AsInt16().NotNullable()

@@ -1,17 +1,10 @@
-﻿using Domain;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Data.SqlClient;
-using System.Diagnostics;
-using System.Transactions;
-using Dapper;
-using API.Repository;
-using API.Common.Enums;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Extensions;
-using API.DTOs;
-using API.Common.Core;
 using AutoMapper;
-using static API.Common.Enums.Enums;
+using Domain.Order;
+using Application.DTOs;
+using Domain.Enums;
+using Application.Services;
 
 namespace API.Controllers
 {
@@ -19,37 +12,26 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class AuthorizeController : ControllerBase
     {
-        private readonly IOrderRepository _orderRepository;
-        private readonly IMapper _mapper;
+        private readonly IOrderService _orderService;
 
-        public AuthorizeController(IOrderRepository orderRepository, IMapper mapper)
+        public AuthorizeController(IOrderService orderService)
         {
-            _orderRepository = orderRepository;
-            _mapper = mapper;
+            _orderService = orderService;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<OrderResponseDto>> GetOrders()
+        public async Task<IEnumerable<OrderResponseDto>> GetOrdersWithCapturedStatus()
         {
-            return await _orderRepository.GetAll();
+            return await _orderService.GetAllWithStatusAndPagination();
         }
 
         [HttpPost]
-        public async Task<ActionResult<OrderStatusResponseDto>> AddTransaction(CreateOrderDto orderDto)
+        public async Task<ActionResult<OrderStatusResponseDto>> AddOrder(CreateOrderDto orderDto)
         {
             try
             {
-                var order = _mapper.Map<Order>(orderDto);
-                var status = Enums.Status.Authorized.GetDisplayName();
 
-                order.Status = status;
-                var newOrderGuid = await _orderRepository.Add(order);
-
-                var responseStatus = new OrderStatusResponseDto()
-                {
-                    Id = newOrderGuid,
-                    Status = status
-                };
+                var responseStatus = await _orderService.AddOrder(orderDto);
 
                 return Ok(responseStatus);
             } 
@@ -75,7 +57,7 @@ namespace API.Controllers
         {
             try
             {
-                var update = await _orderRepository.UpdateOrderStatus(changeStatusRequestDto, id, status);
+                var update = await _orderService.UpdateOrderStatus(id, status);
 
                 var responseStatus = new OrderStatusResponseDto()
                 {

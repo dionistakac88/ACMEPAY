@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http.HttpResults;
 using static System.Net.Mime.MediaTypeNames;
 using System.Collections.Generic;
-using API.Repository;
 using FluentMigrator.Runner;
 using Persistence;
-using API.Common.Core;
+using Infrastructure.Data;
+using Infrastructure;
+using Application;
 
 namespace API.Extensions
 {
@@ -13,9 +14,8 @@ namespace API.Extensions
         public static IServiceCollection AddApplicationServices(this IServiceCollection services,
             IConfiguration configBuilder)
         {
-            services.AddScoped<IDbConnectionProvider, DbConnectionProvider>();
-            services.AddScoped<IOrderRepository, OrderRepository>();
-            services.AddAutoMapper(typeof(MappingProfiles).Assembly);
+            services.AddPersistence(configBuilder);
+            services.AddApplication();
 
             return services;
         }
