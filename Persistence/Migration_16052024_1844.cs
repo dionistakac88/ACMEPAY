@@ -8,12 +8,12 @@ namespace Infrastructure
     {
         public override void Down()
         {
-            Delete.Table("Orders");
+            Delete.Table("Transactions");
         }
 
         public override void Up()
         {
-            Create.Table("Orders")
+            Create.Table("Transactions")
                 .WithColumn("Id").AsInt32().NotNullable().Identity(1, 1).PrimaryKey()
                 .WithColumn("guid").AsGuid().NotNullable().WithDefault(SystemMethods.NewGuid)
                 .WithColumn("amount").AsDecimal().NotNullable()

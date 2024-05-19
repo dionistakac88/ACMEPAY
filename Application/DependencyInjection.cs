@@ -11,7 +11,7 @@ namespace Application
             this IServiceCollection services)
         {
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
-            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<ITransactionService, TransactionService>();
 
             return services;
         }

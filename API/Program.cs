@@ -1,10 +1,10 @@
 using API.Extensions;
+using API.Middleware;
 using Dapper;
 using FluentMigrator.Runner;
 using Infrastructure.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Persistence;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;
 
@@ -21,13 +21,13 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+app.UseMiddleware<ExceptionHandlingMiddleware>();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
 
 app.UseHttpsRedirection();
 

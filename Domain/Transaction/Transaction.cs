@@ -1,6 +1,6 @@
-﻿namespace Domain.Order
+﻿namespace Domain.Transaction
 {
-    public class Order
+    public class Transaction
     {
         public int Id { get; set; }
         public Guid Guid { get; set; }

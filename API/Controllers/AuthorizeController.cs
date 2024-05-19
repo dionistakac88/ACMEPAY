@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Extensions;
-using AutoMapper;
-using Domain.Order;
 using Application.DTOs;
 using Domain.Enums;
 using Application.Services;
@@ -12,54 +10,46 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class AuthorizeController : ControllerBase
     {
-        private readonly IOrderService _orderService;
+        private readonly ITransactionService _transactionService;
 
-        public AuthorizeController(IOrderService orderService)
+        public AuthorizeController(ITransactionService transactionService)
         {
-            _orderService = orderService;
+            _transactionService = transactionService;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<OrderResponseDto>> GetOrdersWithCapturedStatus()
+        public async Task<IEnumerable<TransactionResponseDto>> GetTransactionsWithCapturedStatus()
         {
-            return await _orderService.GetAllWithStatusAndPagination();
+            return await _transactionService.GetAllWithStatusAndPagination();
         }
 
         [HttpPost]
-        public async Task<ActionResult<OrderStatusResponseDto>> AddOrder(CreateOrderDto orderDto)
+        public async Task<ActionResult<TransactionStatusResponseDto>> AddTransaction(CreateTransactionDto transactionDto)
         {
-            try
-            {
+            var responseStatus = await _transactionService.AddTransaction(transactionDto);
 
-                var responseStatus = await _orderService.AddOrder(orderDto);
-
-                return Ok(responseStatus);
-            } 
-            catch (Exception ex)
-            {
-                return BadRequest(ex.ToString());
-            }
+            return Ok(responseStatus);
         }
 
         [HttpPut("{id}/voids")]
-        public async Task<ActionResult<OrderStatusResponseDto>> ChangeOrderStatusToVoid(Guid id, ChangeStatusRequestDto changeStatusRequestDto)
+        public async Task<ActionResult<TransactionStatusResponseDto>> ChangeTransactionStatusToVoid(Guid id, ChangeStatusRequestDto changeStatusRequestDto)
         {
-            return await UpdateOrderStatus(changeStatusRequestDto, id, Enums.Status.Voided.GetDisplayName());
+            return await UpdateTransactionStatus(changeStatusRequestDto, id, Enums.Status.Voided.GetDisplayName());
         }
 
         [HttpPut("{id}/capture")]
-        public async Task<ActionResult<OrderStatusResponseDto>> ChangeOrderStatusToCapture(Guid id, ChangeStatusRequestDto changeStatusRequestDto)
+        public async Task<ActionResult<TransactionStatusResponseDto>> ChangeTransactionStatusToCapture(Guid id, ChangeStatusRequestDto changeStatusRequestDto)
         {
-            return await UpdateOrderStatus(changeStatusRequestDto, id, Enums.Status.Captured.GetDisplayName());
+            return await UpdateTransactionStatus(changeStatusRequestDto, id, Enums.Status.Captured.GetDisplayName());
         }
 
-        private async Task<ActionResult<OrderStatusResponseDto>>  UpdateOrderStatus(ChangeStatusRequestDto changeStatusRequestDto, Guid id, string status)
+        private async Task<ActionResult<TransactionStatusResponseDto>>  UpdateTransactionStatus(ChangeStatusRequestDto changeStatusRequestDto, Guid id, string status)
         {
-            try
-            {
-                var update = await _orderService.UpdateOrderStatus(id, status);
+            var isUpdated = await _transactionService.UpdateTransactionStatus(id, status);
 
-                var responseStatus = new OrderStatusResponseDto()
+            if (isUpdated)
+            {
+                var responseStatus = new TransactionStatusResponseDto()
                 {
                     Id = id,
                     Status = status
@@ -67,10 +57,11 @@ namespace API.Controllers
 
                 return Ok(responseStatus);
             }
-            catch (Exception ex)
+            else
             {
-                return BadRequest(ex.ToString());
+                return BadRequest("Not Updated");
             }
+            
         }
     }
 }

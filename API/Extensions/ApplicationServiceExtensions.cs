@@ -2,7 +2,6 @@
 using static System.Net.Mime.MediaTypeNames;
 using System.Collections.Generic;
 using FluentMigrator.Runner;
-using Persistence;
 using Infrastructure.Data;
 using Infrastructure;
 using Application;

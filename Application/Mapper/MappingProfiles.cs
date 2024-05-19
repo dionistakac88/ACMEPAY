@@ -1,5 +1,5 @@
 ﻿using Application.DTOs;
-using Domain.Order;
+using Domain.Transaction;
 
 namespace Application.Mapper
 {
@@ -7,8 +7,8 @@ namespace Application.Mapper
     {
         public MappingProfiles()
         {
-            CreateMap<CreateOrderDto, Order>();
-            CreateMap<Order, OrderResponseDto>()
+            CreateMap<CreateTransactionDto, Transaction>();
+            CreateMap<Transaction, TransactionResponseDto>()
                 .ForMember(d => d.Id, o => o.MapFrom(s => s.Guid));
             
         }

@@ -1,5 +1,5 @@
 ﻿using Application.Data;
-using Domain.Order;
+using Domain.Transaction;
 using FluentMigrator.Runner;
 using Infrastructure.Data;
 using Infrastructure.Repositories;
@@ -27,7 +27,7 @@ namespace Infrastructure
                     .AddLogging(config => config.AddFluentMigratorConsole());
 
             services.AddScoped<IDbConnectionProvider, DbConnectionProvider>();
-            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<ITransactionRepository, TransactionRepository>();
 
             return services;
         }

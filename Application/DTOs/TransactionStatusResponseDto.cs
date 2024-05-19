@@ -1,6 +1,6 @@
 ﻿namespace Application.DTOs
 {
-    public class OrderStatusResponseDto
+    public class TransactionStatusResponseDto
     {
         public Guid Id { get; set; }
         public string Status { get; set; }
